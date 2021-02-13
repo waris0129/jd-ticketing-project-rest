@@ -1,1 +1,1 @@
-# jd-ticketing-project-rest
+# jd-ticketing-project-orm
