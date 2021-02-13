@@ -10,4 +10,6 @@ public interface SecurityService extends UserDetailsService {
 
     @Override
     UserDetails loadUserByUsername(String s) throws UsernameNotFoundException;
+
+    UserEntity loadUser(String param);
 }

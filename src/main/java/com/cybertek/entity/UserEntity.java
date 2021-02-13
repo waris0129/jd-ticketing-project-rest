@@ -1,6 +1,7 @@
 package com.cybertek.entity;
 
 import com.cybertek.enums.Gender;
+import com.cybertek.enums.UserState;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -30,5 +31,6 @@ public class UserEntity extends BaseEntity{
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
+
 
 }
