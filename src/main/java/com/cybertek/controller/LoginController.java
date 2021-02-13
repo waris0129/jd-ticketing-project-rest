@@ -1,5 +1,6 @@
 package com.cybertek.controller;
 
+import com.cybertek.annotation.DefaultExceptionMessage;
 import com.cybertek.dto.UserDTO;
 import com.cybertek.entity.ResponseWrapper;
 import com.cybertek.entity.UserEntity;
@@ -8,6 +9,7 @@ import com.cybertek.exception.TicketingException;
 import com.cybertek.mapper.Mapper;
 import com.cybertek.service.UserService;
 import com.cybertek.util.JWTUtil;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 //@Controller
 @RestController
+@Tag(name = "Authentication Controller",description = "Authenticate API")
 public class LoginController {
 	
 //	@RequestMapping(value = {"/login","/"})
@@ -42,6 +45,7 @@ public class LoginController {
 	private JWTUtil jwtUtil;
 
 	@PostMapping("/authenticate")
+	@DefaultExceptionMessage(defaultMessage = "Bad Credentials")
 	public ResponseEntity<ResponseWrapper> doLogin(@RequestBody AuthenticationRequest request) throws TicketingException {
 
 		String password = request.getPassword();

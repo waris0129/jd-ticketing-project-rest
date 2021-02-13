@@ -19,6 +19,22 @@ spring:
     hibernate:
       ddl_auto: update
     show_sql: false
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    properties:
+      transport:
+        protocal: smtp
+      smtp:
+        startsls:
+          enable: true
+          required: true
+        auth: true
+        connectiontimeout: 5000
+        timeout: 5000
+        writetimeout: 5000
+    username: cybertekschool.mail@gmail.com
+    password: Cybertekschool@2020
 security:
   jwt:
     secret-key: cybertek
