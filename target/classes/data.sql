@@ -11,3 +11,4 @@ values ('2021-01-05 00:00:00', 1, false, '2021-01-05 00:00:00', 1, true, 'Admin'
 -- admin@admin.com: Abc1
 -- waris0129@hotmail.com : waris
 -- mike@hotmail.com : mike
+--ginawaris@gmail.com: gina
