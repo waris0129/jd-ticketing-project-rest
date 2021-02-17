@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void save(UserDTO dto) {
+    public UserDTO save(UserDTO dto) throws TicketingException {
 
         //UserEntity userEntity = userMapper.convertToUserEntity(dto);
 //        dto.setEnabled(true);
@@ -59,14 +59,18 @@ public class UserServiceImpl implements UserService {
 //        if(countDuplicate==0)
 //            userRepository.save(userEntity);
 
-        dto.setEnabled(true);
+        UserEntity foundUserEnity = userRepository.findByUsername(dto.getUsername());
+
+        if(foundUserEnity!=null)
+            throw new TicketingException("User already existed");
+
+    //    dto.setEnabled(true);
 
         UserEntity obj =  mapper.convert(dto,new UserEntity());
         obj.setPassword(passwordEncoder.encode(obj.getPassword()));
-        userRepository.save(obj);
+        UserEntity getCreatedUser = userRepository.save(obj);
 
-
-
+        return mapper.convert(getCreatedUser,new UserDTO());
 
     }
 
@@ -148,5 +152,14 @@ public class UserServiceImpl implements UserService {
         }
 
         return false;
+    }
+
+    @Override
+    public UserDTO confirm(UserEntity userEntity) {
+
+        userEntity.setEnabled(true);
+        UserEntity confirmedUserEntity = userRepository.save(userEntity);
+
+        return mapper.convert(confirmedUserEntity,new UserDTO());
     }
 }

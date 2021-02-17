@@ -33,7 +33,7 @@ public class UserController {
 
 
     @PostMapping("/create")
-    public String saveUser(@ModelAttribute("user") UserDTO userDTO, Model model){
+    public String saveUser(@ModelAttribute("user") UserDTO userDTO, Model model) throws TicketingException {
         userService.save(userDTO);
         return "redirect:/user/create";
     }
